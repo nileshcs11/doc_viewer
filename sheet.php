@@ -4,6 +4,10 @@ include('BrowserDetection.php');
 include('db.php');
 session_start();
 $user_name = $_SESSION['userNameX'];
+if(!isset($user_name)){
+	header('location:index.php?auth=failed');
+}
+//insertion wala code kidhar?
 $browser=new Wolfcast\BrowserDetection;
 $browser_name=$browser->getName();
 $browser_version=$browser->getVersion();
@@ -20,7 +24,7 @@ if($detect->isMobile()){
 
 if($detect->isiOS()){
 	$os='IOS';
-}elseif($detect->isAndroidOS()){
+}elseif($detect->isAndroidOS()){ 
 	$os='Android';
 }else{
 	$os='Window';
@@ -69,10 +73,10 @@ mysqli_query($dbc,$sql);
 		an example of complex task to understand what capabilities are expected in an AI application 
 		that you would be developing today for your clients. 
 </pre>
-<form method="post" action="index.php">
+<form method="post" action="Logout.php">
 	<table align="center">
 		<tr>
-			<td><input type="submit" align="center" value="LogOut" style="height:20px;width=30%"></td>
+			<td><input type="submit" align="center" value="   LogOut  " style="height:70px;width=30%"></td>
 		</tr>
 	</table>		
 </form>
